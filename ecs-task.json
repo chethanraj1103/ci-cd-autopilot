@@ -1,0 +1,22 @@
+{
+    "family": "ci-cd-autopilot-task",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "containerDefinitions": [
+        {
+            "name": "ci-cd-autopilot",
+            "image": "497520304392.dkr.ecr.ap-south-2.amazonaws.com/ci-cd-autopilot:latest",
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": 5000,
+                    "protocol": "tcp"
+                }
+            ]
+        }
+    ]
+}
