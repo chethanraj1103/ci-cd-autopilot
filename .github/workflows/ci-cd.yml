@@ -40,8 +40,11 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
           IMAGE_TAG: latest
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          - name: Build, Tag, and Push Docker Image
+            run: |
+          docker build -t $ECR_REGISTRY/ci-cd-autopilot:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/ci-cd-autopilot:$IMAGE_TAG
+
 
       - name: Deploy to Amazon ECS
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
